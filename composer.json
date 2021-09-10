@@ -1,0 +1,39 @@
+{
+    "name": "palpalasi/view-model",
+    "description": "view model",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hossein Sheikh",
+            "email": "hosseinsheikh.web@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/contracts": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Palpalasi\\ViewModel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Palpalasi\\ViewModel\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Palpalasi\\ViewModel\\Providers\\ViewModelServiceProvider"
+            ]
+        }
+    }
+}
