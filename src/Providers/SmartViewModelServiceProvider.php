@@ -8,7 +8,7 @@ use Palpalasi\ViewModel\Contracts\BaseViewModelContract;
 use Palpalasi\ViewModel\Contracts\SmartViewModelContract;
 use Palpalasi\ViewModel\SmartViewModel;
 
-class ViewModelServiceProvider extends ServiceProvider
+class SmartViewModelServiceProvider extends ServiceProvider
 {
 
     /**

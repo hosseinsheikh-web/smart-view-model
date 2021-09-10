@@ -32,8 +32,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Palpalasi\\ViewModel\\Providers\\ViewModelServiceProvider"
-            ]
+                "Palpalasi\\ViewModel\\Providers\\SmartViewModelServiceProvider"
+            ],
+            "aliases": {
+                "SmartViewModel": "Palpalasi\\ViewModel\\Facades\\SmartViewModelFacade"
+            }
         }
     }
 }
