@@ -20,15 +20,17 @@ class {{ class }} extends Controller
                 ->via('{{via}}')
                 ->thenReturn();
     }
-
-
-    /**
+/**
      * Show the form for creating a new resource.
      * @return Renderable
      */
     public function create()
     {
-        return view('$LOWER_NAME$::create');
+        return \SmartViewModel::addItems([], request())
+                ->throughViewModel('{{viewmodel_name}}.create')
+                ->setNameSpace('{{viewmodel_namespace}}')
+                ->via('{{via}}')
+                ->thenReturn();
     }
 
     /**
@@ -38,7 +40,11 @@ class {{ class }} extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \SmartViewModel::addItems([], $request)
+                ->throughViewModel('{{viewmodel_name}}.index')
+                ->setNameSpace('{{viewmodel_namespace}}')
+                ->via('{{via}}')
+                ->thenReturn();
     }
 
     /**
@@ -48,7 +54,11 @@ class {{ class }} extends Controller
      */
     public function show($id)
     {
-        return view('$LOWER_NAME$::show');
+        return \SmartViewModel::addItems(['id' => $id], request())
+                ->throughViewModel('{{viewmodel_name}}.index')
+                ->setNameSpace('{{viewmodel_namespace}}')
+                ->via('{{via}}')
+                ->thenReturn();
     }
 
     /**
@@ -58,7 +68,11 @@ class {{ class }} extends Controller
      */
     public function edit($id)
     {
-        return view('$LOWER_NAME$::edit');
+        return \SmartViewModel::addItems(['id' => $id], request())
+                ->throughViewModel('{{viewmodel_name}}.index')
+                ->setNameSpace('{{viewmodel_namespace}}')
+                ->via('{{via}}')
+                ->thenReturn();
     }
 
     /**
@@ -69,7 +83,11 @@ class {{ class }} extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return \SmartViewModel::addItems(['id' => $id], $request)
+                ->throughViewModel('{{viewmodel_name}}.index')
+                ->setNameSpace('{{viewmodel_namespace}}')
+                ->via('{{via}}')
+                ->thenReturn();
     }
 
     /**
@@ -79,6 +97,10 @@ class {{ class }} extends Controller
      */
     public function destroy($id)
     {
-        //
+        return \SmartViewModel::addItems(['id' => $id], request())
+                ->throughViewModel('{{viewmodel_name}}.index')
+                ->setNameSpace('{{viewmodel_namespace}}')
+                ->via('{{via}}')
+                ->thenReturn();
     }
 }
