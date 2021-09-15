@@ -3,11 +3,11 @@
 
 # <font color='yellow'>***Smart View Model***</font> 
 - To use this architecture, you can do the following
-````
-return \SmartViewModel::addItems(['id'=> $id, 'kdkdl'], request())
-            ->throughViewModel('test.index')
-            ->setNameSpace('App')
-            ->thenReturn();
+    - Make controller and view model:
+        ````
+            php artisan vm:make-controller {controller name}
+            php artisan vm:make-viewmodel {view model name} --controller={controller name}
+
 
 
     
