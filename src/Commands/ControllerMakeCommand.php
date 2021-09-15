@@ -250,7 +250,6 @@ class ControllerMakeCommand extends GeneratorCommand
         if (!!$via) {
             $call['--via'] = $via;
         }
-        return $this->call('vm:make-viewmodel', ['name' => 'DestroyViewModel', '--controller' => ucfirst($this->getViewModelName()), '--via' => 'dk;ld;']);
 
         return $this->call('vm:make-viewmodel', $call);
     }
