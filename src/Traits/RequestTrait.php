@@ -1,6 +1,6 @@
 <?php
 
-namespace Palpalasi\ViewModel\Traits;
+namespace HosseinSheikh\ViewModel\Traits;
 
 use Illuminate\Http\Request;
 

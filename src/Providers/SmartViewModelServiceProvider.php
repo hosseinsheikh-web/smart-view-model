@@ -1,14 +1,14 @@
 <?php
 
-namespace Palpalasi\ViewModel\Providers;
+namespace HosseinSheikh\ViewModel\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Palpalasi\ViewModel\BaseViewModel;
-use Palpalasi\ViewModel\Commands\ControllerMakeCommand;
-use Palpalasi\ViewModel\Commands\ViewModelMakeCommand;
-use Palpalasi\ViewModel\Contracts\BaseViewModelContract;
-use Palpalasi\ViewModel\Contracts\SmartViewModelContract;
-use Palpalasi\ViewModel\SmartViewModel;
+use HosseinSheikh\ViewModel\BaseViewModel;
+use HosseinSheikh\ViewModel\Commands\ControllerMakeCommand;
+use HosseinSheikh\ViewModel\Commands\ViewModelMakeCommand;
+use HosseinSheikh\ViewModel\Contracts\BaseViewModelContract;
+use HosseinSheikh\ViewModel\Contracts\SmartViewModelContract;
+use HosseinSheikh\ViewModel\SmartViewModel;
 
 class SmartViewModelServiceProvider extends ServiceProvider
 {

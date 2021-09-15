@@ -1,8 +1,8 @@
 <?php
 
-namespace Palpalasi\ViewModel;
+namespace HosseinSheikh\ViewModel;
 
-use Palpalasi\ViewModel\Contracts\MethodParameterContract;
+use HosseinSheikh\ViewModel\Contracts\MethodParameterContract;
 
 class MethodParameter implements MethodParameterContract
 {

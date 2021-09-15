@@ -1,6 +1,6 @@
 <?php
 
-namespace Palpalasi\ViewModel\Contracts;
+namespace HosseinSheikh\ViewModel\Contracts;
 
 interface BaseViewModelContract
 {

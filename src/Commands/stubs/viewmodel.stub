@@ -3,7 +3,7 @@
 namespace {{ viewmodel_namespace }};
 
 use Illuminate\Http\Request;
-use Palpalasi\ViewModel\BaseViewModel;
+use HosseinSheikh\ViewModel\BaseViewModel;
 
 class {{ viewmodel_name }} extends BaseViewModel
 {

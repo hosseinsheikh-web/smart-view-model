@@ -1,6 +1,6 @@
 <?php
 
-namespace Palpalasi\ViewModel\Facades;
+namespace HosseinSheikh\ViewModel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

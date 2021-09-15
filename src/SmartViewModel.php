@@ -1,10 +1,10 @@
 <?php
 
-namespace Palpalasi\ViewModel;
+namespace HosseinSheikh\ViewModel;
 
-use Palpalasi\ViewModel\Contracts\BaseViewModelContract;
-use Palpalasi\ViewModel\Contracts\SmartViewModelContract;
-use Palpalasi\ViewModel\Traits\RequestTrait;
+use HosseinSheikh\ViewModel\Contracts\BaseViewModelContract;
+use HosseinSheikh\ViewModel\Contracts\SmartViewModelContract;
+use HosseinSheikh\ViewModel\Traits\RequestTrait;
 use Throwable;
 
 class SmartViewModel implements SmartViewModelContract

@@ -1,8 +1,8 @@
 <?php
 
-namespace Palpalasi\ViewModel;
+namespace HosseinSheikh\ViewModel;
 
-use Palpalasi\ViewModel\Contracts\BaseViewModelContract;
+use HosseinSheikh\ViewModel\Contracts\BaseViewModelContract;
 
 class BaseViewModel implements BaseViewModelContract
 {

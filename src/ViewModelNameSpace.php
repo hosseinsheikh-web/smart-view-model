@@ -1,6 +1,6 @@
 <?php
 
-namespace Palpalasi\ViewModel;
+namespace HosseinSheikh\ViewModel;
 
 use Illuminate\Support\Str;
 

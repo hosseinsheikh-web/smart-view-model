@@ -1,6 +1,6 @@
 <?php
 
-namespace Palpalasi\ViewModel\Contracts;
+namespace HosseinSheikh\ViewModel\Contracts;
 
 use Illuminate\Http\Request;
 

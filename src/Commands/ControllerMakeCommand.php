@@ -1,6 +1,6 @@
 <?php
 
-namespace Palpalasi\ViewModel\Commands;
+namespace HosseinSheikh\ViewModel\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
