@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ viewmodel_namespace }};
+
+use Illuminate\Http\Request;
+use Palpalasi\ViewModel\BaseViewModel;
+
+class {{ viewmodel_name }} extends BaseViewModel
+{
+    public function {{ viewmodel_method }}(Request $request)
+    {
+        //
+    }
+}

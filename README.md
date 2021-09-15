@@ -2,7 +2,12 @@
 
 
 # <font color='yellow'>***Smart View Model***</font> 
-- Add view model contract to constructor
+- To use this architecture, you can do the following
+````
+return \SmartViewModel::addItems(['id'=> $id, 'kdkdl'], request())
+            ->throughViewModel('test.index')
+            ->setNameSpace('App')
+            ->thenReturn();
 
 
     
