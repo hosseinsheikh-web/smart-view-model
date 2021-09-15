@@ -14,7 +14,7 @@ class {{ class }} extends Controller
      */
     public function __invoke()
     {
-        return \SmartViewModel::addItems([], request())
+        return \SmartViewModel::addItems([])
                 ->throughViewModel('{{viewmodel_name}}.index')
                 ->thenReturn();
     }
