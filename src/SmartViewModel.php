@@ -13,6 +13,7 @@ class SmartViewModel implements SmartViewModelContract
     use RequestTrait;
 
     private $view_model;
+    private $view_model_full_path;
     private $method = 'render'; //default method
     private $result;
     private $content = null;
@@ -39,6 +40,13 @@ class SmartViewModel implements SmartViewModelContract
         return $this;
     }
 
+    public function through($viewModel)
+    {
+        $this->view_model_full_path = $viewModel;
+
+        return $this;
+    }
+
     public function thenReturn()
     {
         try {
@@ -57,6 +65,10 @@ class SmartViewModel implements SmartViewModelContract
 
     private function getViewModelNamespace()
     {
+        if (!!$this->view_model_full_path) {
+            return resolve(ViewModelNameSpace::class)->getFullPath($this->view_model_full_path);
+        }
+
         return resolve(ViewModelNameSpace::class)->get($this->getNamespace(), $this->view_model);
     }
 
@@ -122,7 +134,7 @@ class SmartViewModel implements SmartViewModelContract
     /**
      * Handle the given exception.
      *
-     * @param  \Throwable  $e
+     * @param \Throwable $e
      * @return mixed
      *
      * @throws \Throwable

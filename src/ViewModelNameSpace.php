@@ -2,23 +2,43 @@
 
 namespace HosseinSheikh\ViewModel;
 
-use Illuminate\Support\Str;
+use Str;
 
 class ViewModelNameSpace
 {
     private $namespaces = [];
-    public  function get($namespace, $viewModelPath)
+
+    public function get($namespace, $viewModelPath)
     {
         $viewModel = $this->dotToNamespace($namespace);
 
-        $viewModel =  ltrim($viewModel, '\\');
+        $viewModel = ltrim($viewModel, '\\');
+
         $viewModel = $viewModel . "\\ViewModels";
+
+        if (Str::contains($this->dotToNamespace($viewModelPath), 'ViewModel')) {
+            return $viewModel . $this->dotToNamespace($viewModelPath);
+        }
 
         return $viewModel . $this->dotToNamespace($viewModelPath) . "ViewModel";
 
     }
 
-  public   function dotToNamespace($namespaces): string
+    public function getFullPath($viewModelPath)
+    {
+        $viewModel = $this->dotToNamespace($viewModelPath);
+
+        $viewModel = ltrim($viewModel, '\\');
+return  rtrim($this->dotToNamespace($viewModelPath), 'ViewModel'). "ViewModel";
+        if (Str::contains($this->dotToNamespace($viewModelPath), 'ViewModel')) {
+            return $viewModel;
+        }
+
+        return $viewModel . "ViewModel";
+
+    }
+
+    public function dotToNamespace($namespaces): string
     {
         $this->namespaces = explode('.', $namespaces);
         $viewModel = '';
