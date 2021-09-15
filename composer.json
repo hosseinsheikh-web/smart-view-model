@@ -2,6 +2,9 @@
     "name": "palpalasi/smart-view-model",
     "description": "smart view model",
     "license": "MIT",
+    "keywords": ["laravel", "laravel8-package", "PHP", "laravel8", "laravel-view-model"],
+    "license": "MIT",
+    "homepage": "https://github.com/hosseinsheikh-web/smart-view-model",
     "authors": [
         {
             "name": "Hossein Sheikh",
