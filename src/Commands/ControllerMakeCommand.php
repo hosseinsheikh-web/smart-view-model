@@ -153,7 +153,7 @@ class ControllerMakeCommand extends GeneratorCommand
     protected function buildNamespaceReplacements(array $replace)
     {
         return array_merge($replace, [
-            '{{viewmodel_namespace}}' => $this->option('namespace'),
+            '{{viewmodel_namespace}}' => str_replace('/', '.', strtolower($this->option('namespace'))),
         ]);
     }
 
