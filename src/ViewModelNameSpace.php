@@ -29,13 +29,8 @@ class ViewModelNameSpace
         $viewModel = $this->dotToNamespace($viewModelPath);
 
         $viewModel = ltrim($viewModel, '\\');
-return  rtrim($this->dotToNamespace($viewModelPath), 'ViewModel'). "ViewModel";
-        if (Str::contains($this->dotToNamespace($viewModelPath), 'ViewModel')) {
-            return $viewModel;
-        }
 
-        return $viewModel . "ViewModel";
-
+        return rtrim($this->dotToNamespace($viewModelPath), 'ViewModel') . "ViewModel";
     }
 
     public function dotToNamespace($namespaces): string

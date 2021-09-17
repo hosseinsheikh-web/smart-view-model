@@ -52,7 +52,7 @@ class {{ class }} extends Controller
      */
     public function show($id)
     {
-        return \SmartViewModel::addItems(['id' => $id]))
+        return \SmartViewModel::addItems(['id' => $id])
                 ->throughViewModel('{{viewmodel_name}}.index')
                 ->setNameSpace('{{viewmodel_namespace}}')
                 ->thenReturn();

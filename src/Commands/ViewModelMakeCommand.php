@@ -72,9 +72,6 @@ class ViewModelMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        /*if (!!$this->option('namespace')){
-            return ''.str_replace('/', '\\', $this->option('namespace'));
-        }*/
         $c = str_replace('Controller', '', $this->option('controller'));
 
         return $rootNamespace . '\\ViewModels\\' . $c;
@@ -91,6 +88,7 @@ class ViewModelMakeCommand extends GeneratorCommand
     protected function buildClass($name)
     {
         $controllerNamespace = $this->getNamespace($name);
+
         $replace = [/*'{{viewmodel_name}}' => $controllerNamespace*/];
         $replace = $this->buildVeiwModelReplacements($replace);
 
@@ -129,7 +127,7 @@ class ViewModelMakeCommand extends GeneratorCommand
     {
         return array_merge($replace, [
             '{{ viewmodel_namespace }}' => $this->option('namespace') ?
-                str_replace('/', '\\', $this->option('namespace')) :
+                str_replace('/', '\\', $this->createNamespaceWithOption()) :
                 str_replace('\\\\', "\\", $this->getDefaultNamespace($this->rootNamespace())),
         ]);
     }
@@ -173,13 +171,6 @@ class ViewModelMakeCommand extends GeneratorCommand
         ];
     }
 
-    /*protected function replaceClass($stub, $name)
-    {
-        $class = str_replace($this->getNamespace($name).'\\', '', $name);
-
-        return str_replace(['DummyClass', '{{ class }}', '{{class}}'], $class, $stub);
-    }*/
-
     public function handle()
     {
         // First we need to ensure that the given name is not a reserved word within the PHP
@@ -192,10 +183,22 @@ class ViewModelMakeCommand extends GeneratorCommand
         }
 
         $name = $this->qualifyClass($this->getNameInput());
-        if (!!$this->option('namespace')) {
+
+        if (!!$this->option('namespace')  && !!$this->option('controller')) {
             $name = $this->arguments('name')['name'];
             $path = Str::replace('/app', '', $this->laravel['path']);
-            $name_space = $this->option('namespace');
+            $name_space = $this->createNamespaceWithOption();
+
+            $path = $path . '/' . str_replace('\\', '/', $name_space) . '/'.$name.'.php';
+
+            // dd($path);
+        } elseif (!!$this->option('namespace')) {
+            $name = $this->arguments('name')['name'];
+
+            $path = Str::replace('/app', '', $this->laravel['path']);
+
+            $name_space = $this->option('namespace').'/ViewModels';
+
             $path = $path . '/' . str_replace('\\', '/', $name_space) . '/'.$name.'.php';
         } else {
             $path = $this->getPath($name);
@@ -221,11 +224,22 @@ class ViewModelMakeCommand extends GeneratorCommand
         // stub files so that it gets the correctly formatted namespace and class name.
         $this->makeDirectory($path);
 
-
         // $build = str_replace('{{ viewmodel_namespace }}', $name_space, $this->buildClass($name));
         $this->files->put($path, $this->sortImports($this->buildClass($name)));
 
 
         $this->info($this->type . ' created successfully.');
+    }
+
+    /**
+     * @return string
+     */
+    private function createNamespaceWithOption(): string
+    {
+        $controllerPath = str_replace('Controller', '', $this->option('controller'));
+
+        $name_space = $this->option('namespace') . '/ViewModels/' . $controllerPath;
+
+        return $name_space;
     }
 }

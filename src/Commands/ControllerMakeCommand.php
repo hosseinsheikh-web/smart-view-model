@@ -242,6 +242,7 @@ class ControllerMakeCommand extends GeneratorCommand
     private function callViewModel($name, $namespace = null, $via = null): int
     {
         $call['name'] = $name;
+
         $call['--controller'] = ucfirst($this->getViewModelName());
         if (!!$namespace) {
             $call['--namespace'] = $namespace;
