@@ -4,15 +4,14 @@
 # <font color='yellow'>***Smart View Model***</font> 
 - To use this pattern, you can do the following
     - Make controller and view model:
-        ````
+        
             php artisan vm:make-controller {controller name}
             php artisan vm:make-controller {controller name} --namespace={defin special namespace for viewmodel}
             php artisan vm:make-viewmodel {view model name} --controller={controller name}
             php artisan vm:make-viewmodel {view model name} --controller={controller name} --namespace={defin special namespace for viewmodel}
 
 - Controller method structure:
-  
-        ````
+              
              // view model puts in ViewModel/Hossein namespace
              // view model name is IndexViewModel
               public function index()
