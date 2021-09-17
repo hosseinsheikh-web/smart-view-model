@@ -237,6 +237,7 @@ class ViewModelMakeCommand extends GeneratorCommand
     private function createNamespaceWithOption(): string
     {
         $controllerPath = str_replace('Controller', '', $this->option('controller'));
+        $controllerPath = str_replace('controller', '', $controllerPath);
 
         $name_space = $this->option('namespace') . '/ViewModels/' . $controllerPath;
 

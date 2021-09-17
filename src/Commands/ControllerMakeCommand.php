@@ -3,8 +3,6 @@
 namespace HosseinSheikh\ViewModel\Commands;
 
 use Illuminate\Console\GeneratorCommand;
-use Illuminate\Support\Str;
-use InvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
 
 class ControllerMakeCommand extends GeneratorCommand
@@ -50,12 +48,6 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->callViewModel('StoreViewModel', $nameS, $via);
         $this->callViewModel('UpdateViewModel', $nameS, $via);
         $this->callViewModel('DestroyViewModel', $nameS, $via);
-        // $this->call('vm:make-viewmodel', ['name' => 'CreateViewModel', '--controller' => ucfirst($this->getViewModelName())]);
-        // $this->call('vm:make-viewmodel', ['name' => 'ShowViewModel', '--controller' => ucfirst($this->getViewModelName())]);
-        // $this->call('vm:make-viewmodel', ['name' => 'EditViewModel', '--controller' => ucfirst($this->getViewModelName())]);
-        // $this->call('vm:make-viewmodel', ['name' => 'StoreViewModel', '--controller' => ucfirst($this->getViewModelName())]);
-        // $this->call('vm:make-viewmodel', ['name' => 'UpdateViewModel', '--controller' => ucfirst($this->getViewModelName())]);
-        // $this->call('vm:make-viewmodel', ['name' => 'DestroyViewModel', '--controller' => ucfirst($this->getViewModelName())]);
     }
 
     /**
@@ -70,8 +62,6 @@ class ControllerMakeCommand extends GeneratorCommand
             $stub = '/stubs/controller.via-method-namespace.stub';
         } elseif ($via = $this->option('via')) {
             $stub = "/stubs/controller.via-method.stub";
-            // $stub =Str::replace('{{via}}', $via, $stub);
-            // $stub = str_replace('{{via}}', $via, $stub);
         } elseif ($namespace = $this->option('namespace')) {
             $stub = '/stubs/controller.namespace.stub';
         } elseif ($this->option('invokable')) {
@@ -110,20 +100,14 @@ class ControllerMakeCommand extends GeneratorCommand
     /**
      * Build the class with the given name.
      *
-     * Remove the base controller import if we are already in the base namespace.
-     *
      * @param string $name
      * @return string
      */
     protected function buildClass($name)
     {
         $controllerNamespace = $this->getNamespace($name);
-        $replace = [/*'{{viewmodel_name}}' => $controllerNamespace*/];
+        $replace = [];
         $replace = $this->buildVeiwModelReplacements($replace);
-
-        /*if ($this->option('parent')) {
-            $replace = $this->buildParentReplacements();
-        }*/
 
         if ($this->option('via')) {
             $replace = $this->buildViaReplacements($replace);
@@ -139,7 +123,7 @@ class ControllerMakeCommand extends GeneratorCommand
     }
 
     /**
-     * Build the replacements for a parent controller.
+     * Build the replacements via method of viewmodel in controller.
      *
      * @return array
      */
@@ -150,6 +134,12 @@ class ControllerMakeCommand extends GeneratorCommand
         ]);
     }
 
+    /**
+     *  Build the replacements namespace method of viewmodel in controller.
+     *
+     * @param array $replace
+     * @return array
+     */
     protected function buildNamespaceReplacements(array $replace)
     {
         return array_merge($replace, [
@@ -157,63 +147,23 @@ class ControllerMakeCommand extends GeneratorCommand
         ]);
     }
 
+    /**
+     * @param array $replace
+     * @return array
+     */
     protected function buildVeiwModelReplacements(array $replace)
     {
         return array_merge($replace, [
             '{{viewmodel_name}}' => $this->getViewModelName(),
         ]);
-
     }
 
+    /**
+     * @return string|string[]
+     */
     private function getViewModelName()
     {
         return str_replace('controller', '', strtolower($this->argument('name')));
-    }
-
-    /**
-     * Build the model replacement values.
-     *
-     * @param array $replace
-     * @return array
-     */
-    protected function buildModelReplacements(array $replace)
-    {
-        /*$modelClass = $this->parseModel($this->option('model'));
-
-        if (! class_exists($modelClass)) {
-            if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
-                $this->call('make:model', ['name' => $modelClass]);
-            }
-        }
-
-        return array_merge($replace, [
-            'DummyFullModelClass' => $modelClass,
-            '{{ namespacedModel }}' => $modelClass,
-            '{{namespacedModel}}' => $modelClass,
-            'DummyModelClass' => class_basename($modelClass),
-            '{{ model }}' => class_basename($modelClass),
-            '{{model}}' => class_basename($modelClass),
-            'DummyModelVariable' => lcfirst(class_basename($modelClass)),
-            '{{ modelVariable }}' => lcfirst(class_basename($modelClass)),
-            '{{modelVariable}}' => lcfirst(class_basename($modelClass)),
-        ]);*/
-    }
-
-    /**
-     * Get the fully-qualified model class name.
-     *
-     * @param string $model
-     * @return string
-     *
-     * @throws \InvalidArgumentException
-     */
-    protected function parseModel($model)
-    {
-        if (preg_match('([^A-Za-z0-9_/\\\\])', $model)) {
-            throw new InvalidArgumentException('Model name contains invalid characters.');
-        }
-
-        return $this->qualifyModel($model);
     }
 
     /**
@@ -230,19 +180,12 @@ class ControllerMakeCommand extends GeneratorCommand
         ];
     }
 
-    /*protected function replaceClass($stub, $name)
-    {
-        $class = str_replace($this->getNamespace($name).'\\', '', $name);
-
-        return str_replace(['DummyClass', '{{ class }}', '{{class}}'], $class, $stub);
-    }*/
     /**
      * @return int
      */
-    private function callViewModel($name, $namespace = null, $via = null): int
+    private function callViewModel($name, $namespace = null, $via = null)
     {
         $call['name'] = $name;
-
         $call['--controller'] = ucfirst($this->getViewModelName());
         if (!!$namespace) {
             $call['--namespace'] = $namespace;
