@@ -10,7 +10,7 @@
             php artisan vm:make-viewmodel {view model name} --controller={controller name}
             php artisan vm:make-viewmodel {view model name} --controller={controller name} --namespace={defin special namespace for viewmodel}
 
-- Controller method structure:
+    - Controller method structure:
               
              // view model puts in ViewModel/Hossein namespace
              // view model name is IndexViewModel
