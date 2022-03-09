@@ -2,7 +2,7 @@
     "name": "hosseinsheikh/smart-view-model",
     "description": "smart view model",
     "license": "MIT",
-    "keywords": ["laravel", "laravel8", "laravel8-package", "laravel-package", "laravel-smart-view-model", "laravel8-smart-view-model", "PHP", "laravel8", "laravel-view-model", "laravel8-view-model"],
+    "keywords": ["laravel", "laravel8", "laravel8-package", "laravel-package", "laravel-smart-view-model", "laravel8-smart-view-model", "PHP", "laravel8", "laravel-view-model", "laravel8-view-model", "laravel9-view-model"],
     "homepage": "https://github.com/hosseinsheikh-web/smart-view-model",
     "authors": [
         {
@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "illuminate/contracts": "^8.0"
+        "illuminate/contracts": "^9.0"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
