@@ -58,7 +58,7 @@ class MakeController extends Command
     protected function buildModelReplacements(array $replace, $controllerClass)
     {
         $modelClass = $this->parseModel($controllerClass);
-        dd($modelClass);
+        // dd($modelClass);
 
         if (! class_exists($modelClass)) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
