@@ -41,7 +41,7 @@ class {{ class }} extends Controller
     public function store(Request $request)
     {
         return \SmartViewModel::addItems([], $request)
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.store')
                 ->setNameSpace('{{viewmodel_namespace}}')
                 ->via('{{via}}')
                 ->thenReturn();
@@ -55,7 +55,7 @@ class {{ class }} extends Controller
     public function show($id)
     {
         return \SmartViewModel::addItems(['id' => $id])
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.show')
                 ->setNameSpace('{{viewmodel_namespace}}')
                 ->via('{{via}}')
                 ->thenReturn();
@@ -69,7 +69,7 @@ class {{ class }} extends Controller
     public function edit($id)
     {
         return \SmartViewModel::addItems(['id' => $id])
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.edit')
                 ->setNameSpace('{{viewmodel_namespace}}')
                 ->via('{{via}}')
                 ->thenReturn();
@@ -84,7 +84,7 @@ class {{ class }} extends Controller
     public function update(Request $request, $id)
     {
         return \SmartViewModel::addItems(['id' => $id], $request)
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.update')
                 ->setNameSpace('{{viewmodel_namespace}}')
                 ->via('{{via}}')
                 ->thenReturn();
@@ -98,7 +98,7 @@ class {{ class }} extends Controller
     public function destroy($id)
     {
         return \SmartViewModel::addItems(['id' => $id])
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.destroy')
                 ->setNameSpace('{{viewmodel_namespace}}')
                 ->via('{{via}}')
                 ->thenReturn();

@@ -38,7 +38,7 @@ class {{ class }} extends Controller
     public function store(Request $request)
     {
         return \SmartViewModel::addItems([], $request)
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.store')
                 ->thenReturn();
     }
 
@@ -50,7 +50,7 @@ class {{ class }} extends Controller
     public function show($id)
     {
         return \SmartViewModel::addItems(['id' => $id])
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.show')
                 ->thenReturn();
     }
 
@@ -62,7 +62,7 @@ class {{ class }} extends Controller
     public function edit($id)
     {
         return \SmartViewModel::addItems(['id' => $id])
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.edit')
                 ->thenReturn();
     }
 
@@ -75,7 +75,7 @@ class {{ class }} extends Controller
     public function update(Request $request, $id)
     {
         return \SmartViewModel::addItems(['id' => $id], $request)
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.update')
                 ->thenReturn();
     }
 
@@ -87,7 +87,7 @@ class {{ class }} extends Controller
     public function destroy($id)
     {
         return \SmartViewModel::addItems(['id' => $id])
-                ->throughViewModel('{{viewmodel_name}}.index')
+                ->throughViewModel('{{viewmodel_name}}.destroy')
                 ->thenReturn();
     }
 }
