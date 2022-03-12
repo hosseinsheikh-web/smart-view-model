@@ -4,6 +4,7 @@ namespace HosseinSheikh\ViewModel\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Support\Str;
 
 class ControllerMakeCommand extends GeneratorCommand
 {
@@ -41,13 +42,19 @@ class ControllerMakeCommand extends GeneratorCommand
             $via = $this->option('via');
         }
 
-        $this->callViewModel('IndexViewModel', $nameS, $via);
-        $this->callViewModel('CreateViewModel', $nameS, $via);
-        $this->callViewModel('ShowViewModel', $nameS, $via);
-        $this->callViewModel('EditViewModel', $nameS, $via);
-        $this->callViewModel('StoreViewModel', $nameS, $via);
-        $this->callViewModel('UpdateViewModel', $nameS, $via);
-        $this->callViewModel('DestroyViewModel', $nameS, $via);
+        if ($this->hasOption('invokable')) {
+            $this->callViewModel('IndexViewModel', $nameS, $via);
+        } else {
+            $this->callViewModel('IndexViewModel', $nameS, $via);
+            $this->callViewModel('CreateViewModel', $nameS, $via);
+            $this->callViewModel('ShowViewModel', $nameS, $via);
+            $this->callViewModel('EditViewModel', $nameS, $via);
+            $this->callViewModel('StoreViewModel', $nameS, $via);
+            $this->callViewModel('UpdateViewModel', $nameS, $via);
+            $this->callViewModel('DestroyViewModel', $nameS, $via);
+        }
+
+
     }
 
     /**
@@ -156,7 +163,7 @@ class ControllerMakeCommand extends GeneratorCommand
     protected function buildVeiwModelReplacements(array $replace)
     {
         return array_merge($replace, [
-            '{{viewmodel_name}}' => $this->getViewModelName(),
+            '{{viewmodel_name}}' => Str::snake($this->getViewModelName()),
         ]);
     }
 

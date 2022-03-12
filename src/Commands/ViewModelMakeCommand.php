@@ -41,7 +41,7 @@ class ViewModelMakeCommand extends GeneratorCommand
         if ($namespace = $this->option('namespace') && $via = $this->option('via')) {
             $stub = '/stubs/controller.via-method-namespace.stub';
         } elseif ($via = $this->option('via')) {
-            $stub = "/stubs/controller.via-method.stub";
+            $stub = "/stubs/viewmodel.stub";
         } elseif ($namespace = $this->option('namespace')) {
             $stub = '/stubs/viewmodel.stub';
         }
