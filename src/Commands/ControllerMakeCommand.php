@@ -118,7 +118,9 @@ class ControllerMakeCommand extends GeneratorCommand
         }
 
         return str_replace(
-            array_keys($replace), array_values($replace), parent::buildClass($name)
+            array_keys($replace),
+            array_values($replace),
+            parent::buildClass($name)
         );
     }
 
@@ -163,7 +165,9 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     private function getViewModelName()
     {
-        return str_replace('controller', '', strtolower($this->argument('name')));
+        $viewModelName = str_replace('Controller', '', $this->argument('name'));
+
+        return str_replace('controller', '', $viewModelName);
     }
 
     /**
@@ -187,11 +191,11 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $call['name'] = $name;
         $call['--controller'] = ucfirst($this->getViewModelName());
-        if (!!$namespace) {
+        if (! ! $namespace) {
             $call['--namespace'] = $namespace;
         }
 
-        if (!!$via) {
+        if (! ! $via) {
             $call['--via'] = $via;
         }
 
