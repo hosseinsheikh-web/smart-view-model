@@ -26,11 +26,11 @@ class ViewModelNameSpace
 
     public function getFullPath($viewModelPath)
     {
-        $viewModel = $this->dotToNamespace($viewModelPath);
+	    $viewModel = $this->dotToNamespace($viewModelPath);
+	    $viewModel = ltrim($viewModel, '\\');
+	    $pos = strrpos($this->dotToNamespace($viewModelPath), 'ViewModel');
 
-        $viewModel = ltrim($viewModel, '\\');
-
-        return rtrim($this->dotToNamespace($viewModelPath), 'ViewModel') . "ViewModel";
+	    return substr($this->dotToNamespace($viewModelPath), 0, $pos) . "ViewModel";
     }
 
     public function dotToNamespace($namespaces): string
