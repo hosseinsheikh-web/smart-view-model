@@ -28,7 +28,6 @@ class ViewModelNameSpace
     {
 	    $viewModel = $this->dotToNamespace($viewModelPath);
 	    $viewModel = ltrim($viewModel, '\\');
-		
 	    $pos = strrpos($this->dotToNamespace($viewModelPath), 'ViewModel');
 
 	    return substr($this->dotToNamespace($viewModelPath), 0, $pos) . "ViewModel";
