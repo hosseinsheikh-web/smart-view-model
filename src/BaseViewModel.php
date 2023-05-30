@@ -7,7 +7,7 @@ use HosseinSheikh\ViewModel\Contracts\BaseViewModelContract;
 class BaseViewModel implements BaseViewModelContract
 {
     public $request;
-    public $showQuery = false;
+    public $showQueryLog = false;
 
     /**
      * BaseViewModel constructor.

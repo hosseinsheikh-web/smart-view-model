@@ -56,7 +56,7 @@ class SmartViewModel implements SmartViewModelContract
 
             $viewModel = resolve($viewModel);
 
-            if ($viewModel->showQuery){
+            if ($viewModel->showQueryLog){
                 \DB::enableQueryLog();
             }
 
@@ -65,8 +65,8 @@ class SmartViewModel implements SmartViewModelContract
 
             $data = $viewModel->{$this->getMethod()}(...$parameters);
 
-            if ($viewModel->showQuery){
-                \DB::getQueryLog();
+            if ($viewModel->showQueryLog) {
+               return \DB::getQueryLog();
             }
 
             return $data;
