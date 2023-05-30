@@ -55,9 +55,20 @@ class SmartViewModel implements SmartViewModelContract
             $viewModel = $this->getViewModelNamespace();
 
             $viewModel = resolve($viewModel);
+
+            if ($viewModel->showQueryLog){
+                 \DB::enableQueryLog();
+             }
+
             $parameters = $this->getMethodParameters($viewModel);
 
-            return $viewModel->{$this->getMethod()}(...$parameters);
+            $data = $viewModel->{$this->getMethod()}(...$parameters);
+
+            if ($viewModel->showQueryLog){
+                return \DB::getQueryLog();
+             }
+             
+             return $data;
         } catch (Throwable $e) {
             return $this->handleException($e);
         }
